@@ -65,7 +65,8 @@ PRODUCT_COPY_FILES += \
 	device/samsung/wave/fstab.wave:root/fstab.wave \
 	device/samsung/wave/fstab.wave:root/fstab.wave2 \
 	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave.rc \
-	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave2.rc
+	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave2.rc \
+	device/samsung/wave/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Keylayout and Keychars
 PRODUCT_COPY_FILES += \
@@ -111,9 +112,11 @@ PRODUCT_PACKAGES += \
 	power.s5pc110 \
 	hwcomposer.s5pc110 \
 	camera.wave \
+	gps.wave \
 	audio.primary.wave \
 	audio.a2dp.default \
 	audio.usb.default \
+	libril-client \
 	libaudio-ril-interface \
 	libs3cjpeg
 
