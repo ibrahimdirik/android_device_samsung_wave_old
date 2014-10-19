@@ -3,16 +3,15 @@ import init.wave.usb.rc
 on init
     loglevel 9
     export EXTERNAL_STORAGE /storage/sdcard0
-    export SECONDARY_STORAGE /storage/sdcard1
 
     # FIXME: Market checks this variable for space-checking, but downloads to /datadata
     export DOWNLOAD_CACHE /data/download
 
-    mkdir /storage/sdcard0 0000 root root
-    mkdir /storage/sdcard1 0000 root root
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+
     symlink /storage/sdcard0 /sdcard
     symlink /storage/sdcard0 /mnt/sdcard
-    # FIXME: Remove emmc?
 
     # We will create our own ril-daemon service in class 'core' because the
     # rild doesn't like being killed. (During device encryption.)
@@ -34,19 +33,8 @@ on boot
     setprop ro.config.vc_call_vol_steps 15
 
 on fs
-    mkdir /mnt/bada_system
-    chmod 0777 /mnt/bada_system
-    mount vfat /dev/block/mmcblk0p1 /mnt/bada_system noatime
-    mkdir /mnt/bada_user
-    chmod 0777 /mnt/bada_user
-    mount vfat /dev/block/mmcblk0p2 /mnt/bada_user noatime
-    mkdir /mnt/bada_app
-    chmod 0777 /mnt/bada_app
-    mount vfat /dev/block/mmcblk0p3 /mnt/bada_app noatime
-    mount ext4 loop@/mnt/bada_system/system.img /system noatime
-    mount ext4 loop@/mnt/bada_system/cache.img /cache noatime
-    mount ext4 loop@/mnt/bada_app/data.img /data noatime
     mount_all fstab.wave
+    swapon_all fstab.wave
 
 # permissions for bluetooth.
     chown bluetooth net_bt_stack /dev/s3c2410_serial0
@@ -242,4 +230,9 @@ service tvout /system/bin/tvoutserver
 service tvouthack /system/bin/tvouthack
     user system
     group graphics
+    disabled
+
+# fusewrapped external sdcard daemon running as media_rw (1023)
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
     disabled
