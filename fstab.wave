@@ -7,7 +7,8 @@
 /dev/block/mmcblk0p2					/cache		ext4	noatime,nosuid,nodev,errors=panic					wait,check
 /dev/block/mmcblk0p3					/data		ext4	noatime,nosuid,nodev,errors=panic,discard,noauto_da_alloc	wait,encryptable=footer
 
-/devices/platform/s3c-sdhci.2/mmc_host/mmc2 	auto 		auto	defaults								voldmanaged=sdcard0:auto,noemulatedsd
+/devices/platform/s3c-sdhci.0/mmc_host/mmc0 	/storage/sdcard0 vfat	defaults	voldmanaged=sdcard0:2,nonremovable
+/devices/platform/s3c-sdhci.2/mmc_host/mmc2 	/storage/sdcard1 auto	defaults	voldmanaged=sdcard1:auto
 /devices/platform/s3c_otghcd/usb1   		auto		auto	defaults								voldmanaged=usbdisk0:auto 
 
 #ZRam
