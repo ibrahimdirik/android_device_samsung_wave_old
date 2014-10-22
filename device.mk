@@ -65,9 +65,8 @@ PRODUCT_COPY_FILES += \
 	device/samsung/wave/fstab.wave:root/fstab.wave \
 	device/samsung/wave/fstab.wave:root/fstab.wave2 \
 	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave.rc \
-	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave2.rc \
-	device/samsung/wave/twrp.fstab:recovery/root/etc/twrp.fstab
-
+	device/samsung/wave/ueventd.wave.rc:root/ueventd.wave2.rc 
+	
 # Keylayout and Keychars
 PRODUCT_COPY_FILES += \
 	device/samsung/wave/prebuilt/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
@@ -112,11 +111,9 @@ PRODUCT_PACKAGES += \
 	power.s5pc110 \
 	hwcomposer.s5pc110 \
 	camera.wave \
-	gps.wave \
 	audio.primary.wave \
 	audio.a2dp.default \
 	audio.usb.default \
-	libril-client \
 	libaudio-ril-interface \
 	libs3cjpeg
 
