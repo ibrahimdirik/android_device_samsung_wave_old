@@ -9,7 +9,6 @@
 
 /devices/platform/s3c-sdhci.0/mmc_host/mmc0 	/storage/sdcard0 vfat	defaults	voldmanaged=sdcard0:2,nonremovable
 /devices/platform/s3c-sdhci.2/mmc_host/mmc2 	/storage/sdcard1 auto	defaults	voldmanaged=sdcard1:auto
-/devices/platform/s3c_otghcd/usb1   		auto		auto	defaults								voldmanaged=usbdisk0:auto 
 
 #ZRam
 /dev/block/zram0					none		swap	defaults								zramsize=125829120
